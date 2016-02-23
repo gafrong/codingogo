@@ -1,18 +1,3 @@
-Stamplay.init('codingo');
-
-var app = angular.module('codingo', [
-  'ngStamplay',
-  'ngRoute'
-  ]);
-
-app.config(function ($routeProvider){
-  $routeProvider
-    .when('/', {
-      templateUrl: 'lessons/lessons.html',
-      controller: 'LessonsCtrl'
-    })
-})
-
 app.controller('LessonsCtrl', function($scope, $rootScope, $stamplay, Lesson){
   $scope.lessons = [];
   
