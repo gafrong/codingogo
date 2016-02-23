@@ -1,18 +1,3 @@
-Stamplay.init('codingo');
-
-var app = angular.module('codingo', [
-  'ngStamplay',
-  'ngRoute'
-  ]);
-
-app.config(function ($routeProvider){
-  $routeProvider
-    .when('/', {
-      templateUrl: 'lessons/lessons.html',
-      controller: 'LessonsCtrl'
-    })
-})
-
 app.controller('LessonsCtrl', function($scope, $rootScope, $stamplay, Lesson){
   $scope.lessons = [];
   
@@ -39,7 +24,6 @@ app.factory('Lesson', function($q, $stamplay){
     var LessonCollection = new Stamplay.Cobject('lesson').Collection;
     LessonCollection.fetch({populate: true}).then(function(){
       deferred.resolve(LessonCollection.instance);
-
     });
 
     return deferred.promise;

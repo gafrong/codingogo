@@ -1,234 +1,33 @@
 <!doctype html>
-<html ng-app="stamplay">
+<html ng-app="codingo">
   <head>
     <meta charset="utf-8">
-    <title>Stamplay Book Club</title>
+    <title>Codingo Learning</title>
+
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="./bower_components/angular-bootstrap/ui-bootstrap-csp.css" />
     <link rel="stylesheet" href="./bower_components/ionicons/css/ionicons.min.css" />
-    <script type="text/javascript" src="./bower_components/angular/angular.min.js"></script>
-    <script src="./bower_components/stamplay-js-sdk/dist/stamplay.min.js"></script>
-    <script type="text/javascript" src="./bower_components/angular-stamplay/angular-stamplay.js"></script>
-    <script src="./bower_components/algoliasearch/dist/algoliasearch.angular.js"></script>
-    <script src="./bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
-    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
-    <script type="text/javascript" src="./scripts/app.js"></script>
+
   </head>
+
   <body>
-    <nav class="navbar navbar-static-top navbar-inverse">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="">
-            Stamplay Book Club
-          </a>
-        </div>
+    
+    <div ng-include="'./partials/nav.html'"></div>
 
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-6" ng-controller="NavController">
-          <ul class="nav navbar-nav">
-            <li class="active"><a ng-href="#">Books</a></li>
-            <li>
-              <a
-                ng-href="#"
-                ng-show="!loggedIn"
-                ng-click="login()">
+    <div ng-view=""></div>
 
-                Login
-              </a>
-            </li>
-            <li>
-              <a
-                ng-href="#"
-                ng-show="loggedIn"
-                ng-click="logout()">
-
-                Logout {{user.instance.displayName}}
-              </a>
-            </li>
-          </ul>
-        </div>
-
-      </div>
-    </nav>
-    <div class="container">
-      <div class="jumbotron text-center">
-        <h1 class="fancy">What are you reading?</h1>
-        <p class="lead">
-          Share your thoughts about the books you've read
-        </p>
-      </div>
-    </div>
-
-    <div class="container">
-      <div class="row" ng-show="loggedIn && !paid">
-        <div class="col-md-12">
-          <div class="panel panel-default" ng-controller="PaymentController">
-            <div class="panel-heading">
-              Pay to subscribe
-            </div>
-            <div class="panel-body" ng-show="loggedIn">
-              <form class="form-horizontal" ng-submit="pay()">
-                <div class="form-group">
-                  <label for="book" class="col-sm-2 control-label">Card Number</label>
-                  <div class="col-sm-10">
-                    <input
-                      type="text"
-                      ng-model="card.number"
-                      class="form-control"
-                      id="text"
-                      placeholder="4242424242424242"
-                      autocomplete="off">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="book" class="col-sm-2 control-label">CVC</label>
-                  <div class="col-sm-10">
-                    <input
-                      type="text"
-                      ng-model="card.cvc"
-                      class="form-control"
-                      id="text"
-                      placeholder="424"
-                      autocomplete="off">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="book" class="col-sm-2 control-label">Expiry Month</label>
-                  <div class="col-sm-10">
-                    <input
-                      type="text"
-                      ng-model="card.exp_month"
-                      class="form-control"
-                      id="text"
-                      placeholder="07"
-                      autocomplete="off">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="book" class="col-sm-2 control-label">Expiry Year</label>
-                  <div class="col-sm-10">
-                    <input
-                      type="text"
-                      ng-model="card.exp_year"
-                      class="form-control"
-                      id="text"
-                      placeholder="2020"
-                      autocomplete="off">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div class="col-sm-offset-2 col-sm-10">
-                    <button type="submit" class="btn btn-default">Pay</button>
-                  </div>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row" ng-show="loggedIn && paid">
-        <div class="col-md-12">
-          <div class="panel panel-default" ng-controller="ReviewController">
-            <div class="panel-heading">
-              Add a review
-            </div>
-            <div class="panel-body" ng-show="loggedIn">
-              <form class="form-horizontal" ng-submit="leaveReview()">
-                  <div class="form-group">
-                    <label for="book" class="col-sm-2 control-label">Book</label>
-                    <div class="col-sm-10">
-                      <input
-                      type="text"
-                      ng-model="newReview.book"
-                      placeholder="Find a book"
-                      typeahead="book as book.title for book in findBook($viewValue)"
-                      typeahead-loading="loadingBooks" class="form-control">
-                      <i ng-show="loadingBooks" class="glyphicon glyphicon-refresh"></i>
-                    </div>
-                  </div>
-                <div class="form-group">
-                  <label for="text" class="col-sm-2 control-label">Review</label>
-                  <div class="col-sm-10">
-                    <input
-                    type="text"
-                    ng-model="newReview.text"
-                    class="form-control"
-                    id="text"
-                    placeholder="I thought it was hilarious!"
-                    autocomplete="off">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="text" class="col-sm-2 control-label">Rating</label>
-                  <div class="col-sm-10">
-                    <input
-                    type="number"
-                    ng-model="newReview.rating"
-                    class="form-control"
-                    id="text"
-                    ng-minlength="1"
-                    ng-maxlength="5"
-                    placeholder="Rating out of 5"
-                    autocomplete="off">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div class="col-sm-offset-2 col-sm-10">
-                    <button type="submit" class="btn btn-default">Leave Review</button>
-                  </div>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12">
-          <div class="panel panel-default" ng-controller="BooksController">
-            <div class="panel-heading">
-              Books
-            </div>
-            <div class="panel-body" ng-show="loggedIn && paid">
-              <form class="form-horizontal" ng-submit="addBook()">
-                <div class="form-group">
-                  <label for="title" class="col-sm-2 control-label">Book Title</label>
-                  <div class="col-sm-10">
-                    <input
-                    type="text"
-                    ng-model="newBook.title"
-                    class="form-control"
-                    id="title"
-                    placeholder="The Lord of the Rings"
-                    autocomplete="off">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div class="col-sm-offset-2 col-sm-10">
-                    <button type="submit" class="btn btn-default">Add Book</button>
-                  </div>
-                </div>
-              </form>
-            </div>
-            <div class="list-group" ng-repeat="book in books">
-              <div class="list-group-item">
-                <h4 class="list-group-item-heading">{{book.instance.title}}</h4>
-                <span ng-repeat="n in [1,2,3,4,5]">
-                  <i class="icon ion-ios-star" ng-if="book.instance.actions.ratings.avg >= n"></i>
-                  <i class="icon ion-ios-star-outline" ng-if="book.instance.actions.ratings.avg < n"></i>
-                </span>
-              </div>
-              <div class="list-group-item" ng-repeat="review in book.instance.reviews">
-                <button class="btn-default btn btn-xs" ng-click="upvote(review)">
-                  {{review.actions.votes.total}} <i class="icon ion-arrow-up-a"></i>
-                </button>
-                &nbsp;
-                <strong>{{review.user}}</strong> {{review.text}}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
   </body>
+
+  <!-- Scripts -->       
+  <script type="text/javascript" src="./bower_components/angular/angular.min.js"></script>
+  <script src="./bower_components/stamplay-js-sdk/dist/stamplay.min.js"></script>
+  <script type="text/javascript" src="./bower_components/angular-stamplay/angular-stamplay.js"></script>
+  <script src="./bower_components/algoliasearch/dist/algoliasearch.angular.js"></script>
+  <script src="./bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+  <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+  <script type="text/javascript" src="./scripts/app.js"></script>
+  <script src="./bower_components/angular-route/angular-route.js"></script>       
+   
 </html>
