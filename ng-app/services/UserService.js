@@ -5,18 +5,18 @@ app
     return {
       getCurrent: function() {
         
-        // var def = $q.defer();
+        var def = $q.defer();
 
-        // // instantiate a new user model from the stamplay js sdk
-        // var user = new Stamplay.User().Model;
-        // console.log(user);
-        // user.currentUser()
-        //     .then(function() {
-        //         // send the entire user model back
-        //         def.resolve(user);
-        //     });
+        // instantiate a new user model from the stamplay js sdk
+        var user = new Stamplay.User().Model;
+        console.log(user);
+        user.currentUser()
+            .then(function() {
+                // send the entire user model back
+                def.resolve(user);
+            });
 
-        // return def.promise;
+        return def.promise;
       },
       signup: function(data) {
         var def = $q.defer();

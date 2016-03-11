@@ -38,7 +38,7 @@ app.controller('NavbarCtrl', ['$scope', '$location', 'userStatus', '$rootScope',
           if(logged !== undefined){
               $scope.$apply(function(){
                 $scope.logged = true;
-                $scope.username = user.username;
+                $scope.displayName = user.displayName;
                 $scope.email = user.email;
                 $rootScope.user = user;
                 if(user.profileImg !== ''){
@@ -48,7 +48,7 @@ app.controller('NavbarCtrl', ['$scope', '$location', 'userStatus', '$rootScope',
                 }
                 $scope._id = user._id;
               })
-              userStatus.setUser(user.username, user.profileImg, user._id, user.email, true)
+              userStatus.setUser(user.displayName, user.profileImg, user._id, user.email, true)
             }
           }, function(err){
             console.log(err);

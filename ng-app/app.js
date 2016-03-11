@@ -88,20 +88,7 @@ var app = angular.module('codingogo', [
           controller: 'NavbarCtrl'
         }
       }
-    })   
-    .state('subscribe-login', {
-      url: '/subscribe/login',     
-      views: {
-        '': {
-          templateUrl: '/ng-app/pages/subscribe-login.html',
-          controller: 'RegistrationCtrl'                  
-        },
-        'header': {
-          templateUrl: '/ng-app/partials/header.html',
-          controller: 'NavbarCtrl'
-        }
-      }
-    })       
+    })         
     .state('about', {
       url: '/about',     
       views: {
