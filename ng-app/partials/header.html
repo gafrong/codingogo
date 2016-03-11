@@ -4,10 +4,10 @@
       <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
 
       <ul class="right ">
-        <li class="hide-on-med-and-down"><a ui-sref="about">코딩고란?</a></li>  
-        <li class="hide-on-med-and-down"><a ui-sref="pricing">가입비</a></li>
-        <li ng-if="!logged" class="hide-on-med-and-down"><a ui-sref="registration">회원가입</a></li>
-        <li ng-if="!logged"><a ui-sref="login" class="login-btn">로그인</a></li>
+        <li class="hide-on-med-and-down"><a ui-sref="about">About</a></li>  
+        <li class="hide-on-med-and-down"><a ui-sref="pricing">Pricing</a></li>
+        <li ng-if="!logged" class="hide-on-med-and-down"><a ui-sref="registration">Sign Up</a></li>
+        <li ng-if="!logged"><a ui-sref="login" class="login-btn">Log In</a></li>
         <li ng-if="logged"><a ui-sref="subscribe" class="btn deep-orange accent-1 hide-on-med-and-down">PRO 회원가입</a></li>
 
         <!-- Dropdown Trigger --> 
@@ -24,11 +24,11 @@
 
       <!-- Mobile menu -->
       <ul class="side-nav" id="mobile-demo">
-        <li class="" ng-if="!logged"><a ui-sref="registration">회원가입</a></li>
-        <li class="" ng-if="!logged"><a ui-sref="login">로그인</a></li>
-        <li class=""><a ui-sref="about">코딩고란?</a></li>  
-        <li class=""><a ui-sref="pricing">가입비</a></li>
-        <li class="" ng-if="logged" ng-click="logout()"><a>나가기</a></li>
+        <li class="" ng-if="!logged"><a ui-sref="registration">Sign Up</a></li>
+        <li class="" ng-if="!logged"><a ui-sref="login">Log In</a></li>
+        <li class=""><a ui-sref="about">About</a></li>  
+        <li class=""><a ui-sref="pricing">Pricing</a></li>
+        <li class="" ng-if="logged" ng-click="logout()"><a>Log Out</a></li>
       </ul>
     </div>
   </nav>
