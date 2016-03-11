@@ -1,0 +1,34 @@
+.center {
+  text-align: center;
+  margin: 0 auto;
+}
+.height400 {
+  min-height: 400px;
+}
+.height600 {
+  min-height: 600px;
+}
+.full-width {
+  width: 100%;
+  display: block;
+}
+.absolute {
+  position: absolute;
+}
+.width400 {
+  max-width: 400px;
+}
+.text-right {
+  float: right;
+}
+.container-default {
+  margin: 0 auto;
+  max-width: 1280px;
+  width: 80%;
+}
+.height100{
+  height: 100%;
+}
+.margin-none {
+  margin: 0;
+}

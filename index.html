@@ -1,33 +1,50 @@
 <!doctype html>
-<html ng-app="codingo">
+<html ng-app="codingogo">
   <head>
     <meta charset="utf-8">
     <title>Codingo Learning</title>
 
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width">
-    <link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="./bower_components/angular-bootstrap/ui-bootstrap-csp.css" />
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="./bower_components/ionicons/css/ionicons.min.css" />
-
+    <link rel="stylesheet" href="ng-app/global/global.css"/>
+    <link rel="stylesheet" href="./bower_components/Materialize/dist/css/materialize.min.css"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <link rel="stylesheet" href="./ng-app/main/lessons.css"/>
+    <link rel="stylesheet" href="./ng-app/partials/partials.css"/>
+    <link rel="stylesheet" href="./ng-app/user/user.css">
+    <link rel="stylesheet" href="./ng-app/pages/pages.css">
+    <link rel="stylesheet" href="./ng-app/global/variables.css">
   </head>
 
   <body>
-    
-    <div ng-include="'./partials/nav.html'"></div>
-
-    <div ng-view=""></div>
-
+    <div ui-view="header"></div>
+    <div ui-view></div>
+    <div ng-include="'./ng-app/partials/_footer.html'"></div>
   </body>
 
-  <!-- Scripts -->       
+ <!-- Scripts -->       
+  <script src="./bower_components/jquery/dist/jquery.js"></script>
   <script type="text/javascript" src="./bower_components/angular/angular.min.js"></script>
-  <script src="./bower_components/stamplay-js-sdk/dist/stamplay.min.js"></script>
+  <script src="https://drrjhlchpvi7e.cloudfront.net/libs/stamplay-js-sdk/2.0/stamplay.min.js"></script>
   <script type="text/javascript" src="./bower_components/angular-stamplay/angular-stamplay.js"></script>
-  <script src="./bower_components/algoliasearch/dist/algoliasearch.angular.js"></script>
-  <script src="./bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+  <script type="text/javascript" src="./bower_components/algoliasearch/dist/algoliasearch.angular.js"></script>
+ 
   <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
-  <script type="text/javascript" src="./scripts/app.js"></script>
-  <script src="./bower_components/angular-route/angular-route.js"></script>       
+  <script type="text/javascript" src="./bower_components/angular-route/angular-route.js"></script> 
+  
+  <script src="./bower_components/angular-ui-router/release/angular-ui-router.min.js"></script> 
+  <script src="./bower_components/Materialize/dist/js/materialize.min.js"></script>   
+  <script type="text/javascript" src="./ng-app/app.js"></script>
+  <script src="./ng-app/auth/RegistrationCtrl.js"></script>
+  <script src="./ng-app/auth/LoginCtrl.js"></script>
+  <script src="./ng-app/auth/NavbarCtrl.js"></script>
+  <script type="text/javascript" src="./ng-app/main/lessons.js"></script> 
+  <script src="./ng-app/user/user.js"></script>
+  <script src="./ng-app/pages/pages.js"></script>
+  <script src="./ng-app/factories/userStatus.js"></script> 
+  <script src="./ng-app/services/LessonService.js"></script>
+  <script src="./ng-app/services/VideoService.js"></script>
+  <script src="./ng-app/factories/globalVariable.js"></script>
+  <script src="./ng-app/factories/validator.js"></script>     
    
 </html>

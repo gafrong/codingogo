@@ -1,0 +1,32 @@
+<div class="container-video height600">
+  <div class="row">
+    <h4 class="center grey-text page-title">Lesson: {{lessonObj.title}}</h4>
+  
+    <div class="">          
+      <ul class="collection lesson-nav">
+        <li class="collection-item avatar" ng-repeat="item in filteredVideos"><a href="" ng-click="showTab($index)"><i class="material-icons circle red">play_arrow</i>{{item.title}}</a>
+          <span class="text-right grey-text darken-3">{{item.duration}}</span>
+          <a href="" class="full-width" ng-click="showTab($index)">{{item.description}}</a>
+        </li>
+      </ul>
+    </div>
+    
+    <!-- Video Section -->
+    <div class="video-section">
+      <div class="card blue-grey darken-1">
+        <div class="card-content white-text">
+          <span class="card-title">{{videoFile.title}}</span>
+          <p>{{videoFile.description}}</p>
+          <img src="{{videoFile.wistia}}" alt="" width="100%">
+        </div>
+        <div class="card-action">
+          <a href="">Previous</a>
+          <span class="right"><a href="">Next</a></span>
+        </div>
+      </div>
+
+      
+    </div>
+ 
+  </div>
+</div>
