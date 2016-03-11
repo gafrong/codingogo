@@ -1,5 +1,5 @@
-# sp-stamplay
+# Codingo
 
-Stamplay Book Club application
+Code to build startups.
 
-For a yet to be published SitePoint article
+This is a tutorial service.
