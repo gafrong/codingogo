@@ -1,6 +1,6 @@
 {
-  "appId": "bookclub",
-  "apiKey": "YOUR_KEY_HERE",
+  "appId": "codingogo",
+  "apiKey": "4440fe5c781514e5d3782bacf93c237c8afe78c2c335e17c1c32316cae70cb42",
   "public": "./",
   "ignore": [
     "stamplay.json",
