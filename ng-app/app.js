@@ -3,7 +3,7 @@ var app = angular.module('codingogo', [
   'ui.router'
 ])
 .run( function ($stamplay, $location){
-  Stamplay.init('codingo');
+  Stamplay.init('codingogo');
 })
 .config(function ($stateProvider, $urlRouterProvider){
 

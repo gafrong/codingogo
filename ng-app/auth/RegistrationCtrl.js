@@ -34,5 +34,4 @@ app.controller('RegistrationCtrl', ['$scope', 'userStatus', 'globalVariable', 'v
           })
       }
     }
-    console.log($state);
 }])
