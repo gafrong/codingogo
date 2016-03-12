@@ -45,3 +45,20 @@ app.controller('LessonCtrl', function($scope, $stateParams, Lesson, Video){
   });
 
 });
+
+app.factory('Lesson', function($q, $stamplay){
+  function all() {
+    var deferred = $q.defer();
+
+    var LessonCollection = new Stamplay.Cobject('lesson').Collection;
+    LessonCollection.fetch({populate: true}).then(function(){
+      deferred.resolve(LessonCollection.instance);
+    });
+
+    return deferred.promise;
+  }
+
+  return {
+    all: all
+  }
+});
