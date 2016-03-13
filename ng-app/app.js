@@ -2,8 +2,16 @@ var app = angular.module('codingogo', [
   'ngStamplay',
   'ui.router'
 ])
-.run( function ($stamplay, $location){
+.run( function ($stamplay, userStatus, $rootScope){
   Stamplay.init('codingogo');
+  // var user = userStatus.getUserModel()
+  // user.currentUser().then(function(res){
+  //   if(res.user !== undefined){
+  //     res.user.logged = true;
+  //   }
+  //   $rootScope.user = res.user;
+  // })
+
 })
 .config(function ($stateProvider, $urlRouterProvider){
 
@@ -76,12 +84,12 @@ var app = angular.module('codingogo', [
       }
     }) 
 
-    .state('subscribe', {
-      url: '/subscribe',     
+    .state('subscriptions', {
+      url: '/subscriptions',     
       views: {
         '': {
-          templateUrl: '/ng-app/pages/subscribe.html',
-          controller: 'RegistrationCtrl'                  
+          templateUrl: '/ng-app/pages/subscription.html',
+          controller: 'SubscriptionsCtrl'                  
         },
         'header': {
           templateUrl: '/ng-app/partials/header.html',
@@ -130,7 +138,8 @@ var app = angular.module('codingogo', [
       url: '/contact',     
       views: {
         '': {
-          templateUrl: '/ng-app/pages/contact.html'
+          templateUrl: '/ng-app/pages/contact.html',
+          controller: 'ContactCtrl'
         },
         'header': {
           templateUrl: '/ng-app/partials/header.html',

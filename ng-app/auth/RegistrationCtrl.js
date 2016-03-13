@@ -5,11 +5,11 @@ app.controller('RegistrationCtrl', ['$scope', 'userStatus', 'globalVariable', 'v
     $scope.EMAIL = globalVariable.email
     //register function
     $scope.register = function () {
-      if ($scope.email && $scope.password && $scope.username) {
+      if ($scope.email && $scope.password && $scope.displayName) {
         var user = {
           email: $scope.email,
           password: $scope.password,
-          username: $scope.username
+          displayName: $scope.displayName
         }
         var validate = {
             email: $scope.email

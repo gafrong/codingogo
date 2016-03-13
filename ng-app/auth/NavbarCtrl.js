@@ -27,11 +27,13 @@ app.controller('NavbarCtrl', ['$scope', '$location', 'userStatus', '$rootScope',
       //default value of user Status
       $scope.logged = false;
       //Call service
-      var user = userStatus.getUserModel()
+      var user = userStatus.getUserModel();
+      // console.log("userStatus.getUserModel(): " );
+      // console.log(userStatus.getUserModel() );
       //if user was defined -> update $scope
+
       user.currentUser()
         .then(function(res){
-          // console.log(res.user);
           var user = res.user;
           $rootScope.loggedUser = res.user;
           var logged = user._id;
@@ -40,7 +42,9 @@ app.controller('NavbarCtrl', ['$scope', '$location', 'userStatus', '$rootScope',
                 $scope.logged = true;
                 $scope.displayName = user.displayName;
                 $scope.email = user.email;
+                // globally sets user
                 $rootScope.user = user;
+                $rootScope.user.logged = true;
                 if(user.profileImg !== ''){
                   $scope.picture = user.profileImg;
                 } else {
