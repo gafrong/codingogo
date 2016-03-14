@@ -46,19 +46,19 @@ app.controller('LessonCtrl', function($scope, $stateParams, Lesson, Video){
 
 });
 
-app.factory('Lesson', function($q, $stamplay){
-  function all() {
-    var deferred = $q.defer();
+// app.factory('Lesson', function($q, $stamplay){
+//   function all() {
+//     var deferred = $q.defer();
 
-    var LessonCollection = new Stamplay.Cobject('lesson').Collection;
-    LessonCollection.fetch({populate: true}).then(function(){
-      deferred.resolve(LessonCollection.instance);
-    });
+//     var LessonCollection = new Stamplay.Cobject('lesson').Collection;
+//     LessonCollection.fetch({populate: true}).then(function(){
+//       deferred.resolve(LessonCollection.instance);
+//     });
 
-    return deferred.promise;
-  }
+//     return deferred.promise;
+//   }
 
-  return {
-    all: all
-  }
-});
+//   return {
+//     all: all
+//   }
+// });

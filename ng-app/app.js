@@ -5,13 +5,6 @@ var app = angular.module('codingogo', [
 .run( function ($stamplay, userStatus, $rootScope){
   Stamplay.init('codingogo');
   Stripe.setPublishableKey('pk_test_cAhaJovqcrJoK6GQYGQFJxfQ');
-  // var user = userStatus.getUserModel()
-  // user.currentUser().then(function(res){
-  //   if(res.user !== undefined){
-  //     res.user.logged = true;
-  //   }
-  //   $rootScope.user = res.user;
-  // })
 
 })
 .config(function ($stateProvider, $urlRouterProvider){
@@ -76,7 +69,7 @@ var app = angular.module('codingogo', [
       views: {
         '': {
           templateUrl: '/ng-app/user/profile.html',
-          controller: 'NavbarCtrl'
+          controller: 'ProfileCtrl'
         },
         'header': {
           templateUrl: '/ng-app/partials/header.html',
@@ -89,7 +82,7 @@ var app = angular.module('codingogo', [
       url: '/subscriptions',     
       views: {
         '': {
-          templateUrl: '/ng-app/pages/subscription.html',
+          templateUrl: '/ng-app/subscription/subscriptions.html',
           controller: 'SubscriptionsCtrl'                  
         },
         'header': {

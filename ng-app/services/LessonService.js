@@ -2,7 +2,7 @@ app.factory('Lesson', function($q, $stamplay, $http){
   function all() {
     var def = $q.defer();
 
-    Stamplay.Object("lesson").get({}, function(err, res){
+    Stamplay.Object('lesson').get({}, function(err, res){
       if(err) return err;
       def.resolve(res);
     })
@@ -16,7 +16,6 @@ app.factory('Lesson', function($q, $stamplay, $http){
       if(err) return err;
       def.resolve(res);
     })
-
     return def.promise;
   }
 

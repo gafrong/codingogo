@@ -12,5 +12,5 @@ app
 .controller('ContactCtrl', function($scope, userStatus){
   // var user = userStatus.getUserModel();
   
-})
+});
 
