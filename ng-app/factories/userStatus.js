@@ -24,42 +24,27 @@ app.factory('userStatus', ['$http','$stamplay', '$rootScope',function ($http, $s
 
       Stamplay.User.currentUser().then(function(res){
         user = res.user;
-console.log(user);
-        // if(user.verificationCode){
-console.log("user.get('stripeCustomerId')");
-console.log(user);
 
-
-          if(!user.get('stripeCustomerId')){
-        console.log("stripeCustomerId"); console.log(user._id);
-        console.log("Stamplay.Stripe"); console.log(Stamplay.Stripe);
-
-            Stamplay.Stripe.createCustomer(err, user.id)
-            .then(function(sResponse){
-        console.log("sResponse");
-
-              var saveUser = Stamplay.User().Model;
-              user.set('stripeCustomerId', sResponse.customer_id);
-              user.set('subscriptions', sResponse.subscriptions);
-              saveUser.set('stripeCustomerId', user.get('stripeCustomerId'));
-              saveUser.set('subscriptions', user.get('subscriptions'));
-              saveUser.set('_id', user.get('_id'));
-              saveUser.save()
-              .then(function(){
-
-              })
+        if(user.verificationCode){
+          if(user.stripeCustomerId === undefined){
+            // Create Stripe Customer           
+            Stamplay.Stripe.createCustomer('', user._id)
+            .then(function(resData){
+              var userData = {
+                'stripeCustomerId': resData.customer_id,
+                'subscriptions': resData.subscriptions
+              };
+              Stamplay.User.update(user._id, userData);
+            }, function(err){
+              console.log(err);
             })
-          }
-
-        // }
-        console.log(user);
-        console.table(Stamplay.Stripe);
-        console.log(Stripe.createCustomer());
-        console.log(Stripe.Stripe);
+          };
+        };
 
       })
       return Stamplay.User;
-    },
+    },    
+
     // Getter and Setter method
     getUser: function () {
       return user

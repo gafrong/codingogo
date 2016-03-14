@@ -4,6 +4,7 @@ var app = angular.module('codingogo', [
 ])
 .run( function ($stamplay, userStatus, $rootScope){
   Stamplay.init('codingogo');
+  Stripe.setPublishableKey('pk_test_cAhaJovqcrJoK6GQYGQFJxfQ');
   // var user = userStatus.getUserModel()
   // user.currentUser().then(function(res){
   //   if(res.user !== undefined){
